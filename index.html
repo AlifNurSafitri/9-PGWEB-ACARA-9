@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="float"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #informasi {
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body> 
+    <h2>Form Input</h2> 
+     
+    <form action="/PGWEB_ACARA_8/input.php" onsubmit="return validateForm(event)" method="post"> 
+        <label for="kecamatan">Kecamatan:</label> 
+        <input type="text" id="kecamatan" name="kecamatan" value=""> 
+         
+        <label for="luas">Luas:</label> 
+        <input type="text" id="luas" name="luas" value=""> 
+         
+        <label for="jumlah_penduduk">Jumlah Penduduk:</label> 
+        <input type="text" id="jumlah_penduduk" name="jumlah_penduduk" value=""> 
+        
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" value=""> 
+        
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" value=""> 
+        
+        <input type="submit" value="Submit"> 
+    </form>  
+    
+    <p id="informasi"></p> 
+    
+    <script> 
+        function validateForm(event) { 
+            let luas = document.getElementById("luas").value; 
+            let text = ""; 
+            if (isNaN(luas) || luas < 1) { 
+                text = "Data luas harus angka dan tidak boleh bernilai negatif"; 
+                event.preventDefault(); // stop the form submission 
+            }  
+            
+            document.getElementById("informasi").innerHTML = text; 
+            return text === ""; // Return false if there is an error
+        } 
+    </script> 
+</body> 
+</html>
